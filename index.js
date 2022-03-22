@@ -28,26 +28,27 @@ app.post('/run', async (req, res) => {
         }
         // then run the code with the extension file
         // and return the result
+        let ans;
         if (language === "cpp") {
             const result = await executeCpp(filepath);
-            return res.json({success: true, result});
+            res.json({success: true, result});
         }
         if (language === "py") {
             const result = await executePy(filepath);
-            return res.json({success: true, result});
+            ans = res.json({success: true, result});
         }
         if (language === "js") {
             const result = await executeJs(filepath);
-            return res.json({success: true, result});
+            ans = res.json({success: true, result});
         }
         if (language === "java") {
             const result = await executeJava(filepath);
-            return res.json({success: true, result});
+            ans = res.json({success: true, result});
         }
         exec(
             `rm -rf /root/OCAP_backend/codes/`
         );
-
+        return ans;
     } catch (error) {
         return res.status(500).json({error});
     }
