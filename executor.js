@@ -66,7 +66,7 @@ const executeJava = (filepath) => {
 // deleteFile(filepath);
 const deleteFile = (filepath) => {
   return exec(
-    `rm ${filepath} && rm -rf ${filepath}`
+    `rm -rf /root/OCAP_backend/codes/`
     );
 };
 
