@@ -1,6 +1,6 @@
 const express = require('express')
 const { generateFile, generateMainFile } = require('./generateFile')
-const { executeCpp, executePy, executeJs, executeJava } = require('./executor')
+const { executeCpp, executePy, executeJs, executeJava, deleteFile } = require('./executor')
 // const cors  = require('./cors')
 const app = express();
 
@@ -43,6 +43,9 @@ app.post('/run', async (req, res) => {
             const result = await executeJava(filepath);
             return res.json({success: true, result});
         }
+
+        await deleteFile(filepath);
+
     } catch (error) {
         return res.status(500).json({error});
     }

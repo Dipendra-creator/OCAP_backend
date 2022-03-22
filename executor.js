@@ -63,6 +63,12 @@ const executeJava = (filepath) => {
   });
 };
 
+// deleteFile(filepath);
+const deleteFile = (filepath) => {
+  return exec(`rm ${filepath}`);
+};
+
+
 module.exports = {
-    executeCpp, executePy, executeJs, executeJava
+    executeCpp, executePy, executeJs, executeJava, deleteFile
 }
