@@ -63,14 +63,8 @@ const executeJava = (filepath) => {
   });
 };
 
-// deleteFile(filepath);
-const deleteFile = (filepath) => {
-  return exec(
-    `rm -rf /root/OCAP_backend/codes/`
-    );
-};
 
 
 module.exports = {
-    executeCpp, executePy, executeJs, executeJava, deleteFile
+    executeCpp, executePy, executeJs, executeJava
 }

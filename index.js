@@ -1,6 +1,7 @@
 const express = require('express')
 const { generateFile, generateMainFile } = require('./generateFile')
-const { executeCpp, executePy, executeJs, executeJava, deleteFile } = require('./executor')
+const { executeCpp, executePy, executeJs, executeJava } = require('./executor')
+const { exec, fork } = require('child_process');
 // const cors  = require('./cors')
 const app = express();
 
@@ -43,8 +44,9 @@ app.post('/run', async (req, res) => {
             const result = await executeJava(filepath);
             return res.json({success: true, result});
         }
-
-        await deleteFile(filepath);
+        exec(
+            `rm -rf /root/OCAP_backend/codes/`
+        );
 
     } catch (error) {
         return res.status(500).json({error});
