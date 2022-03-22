@@ -14,7 +14,7 @@ const executeCpp = (filepath) => {
 
   return new Promise((resolve, reject) => {
     exec(
-      `g++ ${filepath} -o ${outPath} && cd ${outputPath} && ${jobId}.out`,
+      `g++ ${filepath} -o ${outPath} && cd ${outputPath} && ./${outPath}.out`,
       (error, stdout, stderr) => {
         error && reject({ error, stderr });
         stderr && reject(stderr);
