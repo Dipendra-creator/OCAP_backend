@@ -46,7 +46,7 @@ app.post('/run', async (req, res) => {
             ans = res.json({success: true, result});
         }
         exec(
-            `rm -rf /root/OCAP_backend/codes/ && rm -rf /root/OCAP_backend/outputs/`,
+            `rm ${filepath}`,
         );
         return ans;
     } catch (error) {
